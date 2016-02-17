@@ -12,6 +12,7 @@ import os
 import random
 
 
+
 def levenshtein(a,b):
     "Calculates the Levenshtein distance between a and b."
     n, m = len(a), len(b)
@@ -56,14 +57,15 @@ def main():
 	im = Image.open(os.path.join(args.card_dir, cards[0]))
 	print 'card dimensions (px):', im.size
 	card_size = im.size
-	dpmm = args.dpi / 25.441
-	page_size = (int(dpmm * args.page_width_mm),
-		int(dpmm * args.page_height_mm))
+	dpmm = args.dpi / 25.4
+	page_size = (int(round(dpmm * args.page_width_mm)),
+		int(round(dpmm * args.page_height_mm)))
 	print 'page_size:', page_size
+	page_margin = int(round(dpmm * args.page_margin_mm))
+	spacing = int(round(dpmm * args.spacing_mm))
 	page = Image.new('RGB', page_size)
 	page.paste(0xffffffff, (0, 0, page_size[0], page_size[1]))
-	page_margin = int(args.page_margin_mm * dpmm)
-	spacing = int(args.spacing_mm * dpmm)
+	# print round(float(dpmm) / 10000000)
 	ofs_x = ofs_y = page_margin
 	page_cnt = 0
 	for l in lines:
