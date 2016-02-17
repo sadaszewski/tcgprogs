@@ -1,3 +1,11 @@
+#
+# Copyright (C) Stanislaw Adaszewski, 2016
+# http://algoholic.eu
+#
+# Generate printout of MtG cards based on a deck list
+# and directory containing images.
+#
+
 from argparse import ArgumentParser
 from PIL import Image
 import os
